@@ -13,7 +13,7 @@ public class DisplayNmbre : MonoBehaviour
     void Start()
     {
 
-        txt = GameObject.FindGameObjectWithTag("Un objeto de por ahi").GetComponent<Text>();
+        txt = GameObject.FindGameObjectWithTag("objeto").GetComponent<Text>();
         txt.color = Color.clear;
 
     }
@@ -48,7 +48,7 @@ public class DisplayNmbre : MonoBehaviour
         {
 
             txt.text = myString;
-            txt.color = Color.Lerp(txt.color, Color.black, fadeTime * Time.deltaTime);
+            txt.color = Color.Lerp(txt.color, Color.red, fadeTime * Time.deltaTime);
         
         }
         else 
