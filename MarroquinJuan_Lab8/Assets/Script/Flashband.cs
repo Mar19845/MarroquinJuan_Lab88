@@ -12,28 +12,32 @@ public class Flashband : MonoBehaviour
     public GameObject lightobj;
     private bool flashEne;
     private float usedEnergy;
-    public float restaEnergia;
+    //public float restaEnergia;
+    public AudioSource sound;
     // Start is called before the first frame update
     void Start()
     {
         currentEnergy = maxEnergy;
-        maxEnergy = max * batteries;
+        maxEnergy = 50* batteries;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         // energia maxima
-        maxEnergy = max * batteries;
+        maxEnergy = 50* batteries;
         currentEnergy = maxEnergy;
         if(Input.GetMouseButtonDown(0))
         {
             flashEne =! flashEne;
+            //sound.Play();
 
         }
         if(flashEne)
         {
             flashLight.SetActive(true);
+            sound.Play();
             
             // si es menor a 0 apagar el lightobj
             if(currentEnergy <= 0)
@@ -45,10 +49,10 @@ public class Flashband : MonoBehaviour
             {
                 lightobj.SetActive(true);
                 // descargo de la bateria
-                currentEnergy -= restaEnergia * Time.deltaTime;
-                usedEnergy +=  restaEnergia * Time.deltaTime;
+                currentEnergy -= 10 * Time.deltaTime;
+                usedEnergy +=  10 * Time.deltaTime;
             }
-            if(usedEnergy >= max)
+            if(usedEnergy >= 50)
             {
                 batteries -=1;
                 usedEnergy = 0;
@@ -58,6 +62,7 @@ public class Flashband : MonoBehaviour
         else
         {
             flashLight.SetActive(false);
+            sound.Play();
         }
     }
     // funcion que recoge las baterias
