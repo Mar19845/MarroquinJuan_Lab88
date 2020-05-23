@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActivarLuz : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public Light luz;
     void OnTriggerEnter(Collider other) 
     {
@@ -15,4 +15,10 @@ public class ActivarLuz : MonoBehaviour
     {
         luz.enabled = false;
     }
+    // Update is called once per frame
+    void Update()
+    {
+        luz.intensity= Mathf.Sin(Time.time * 10)*100;
+    }
+
 }
